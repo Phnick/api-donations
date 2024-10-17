@@ -6,8 +6,8 @@ import os
 load_dotenv()
 
 
-SECRET_KEY = '394a279603b322ee4df3e9a46fe59c0a'
-ALGORITHM = 'HS256'
+SECRET_KEY = os.getenv('SECRET_KEY')
+ALGORITHM = os.getenv('ALGORITHM')
 EXPIRES_IN_MINUTES = 60
 
 # cria um token jwt com expiração

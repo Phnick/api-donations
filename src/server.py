@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import routes_user
-from infra.sqlalchemy.config.database import criar_bd
+from routers import routes_user,routers_donations
+# from infra.sqlalchemy.config.database import criar_bd
 
 
 app  =FastAPI()
-criar_bd()
+
 
 
 origins = ['http://localhost:5000']
@@ -18,5 +18,6 @@ app.add_middleware(
 )
 
 app.include_router(routes_user.router,prefix='/auth')
+app.include_router(routers_donations.router)
 
 

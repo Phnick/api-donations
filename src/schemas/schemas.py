@@ -1,11 +1,23 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional,List
+
+
+
+class Donation_simple(BaseModel):
+    id:Optional[int] = None
+    item_name:str
+    quantity:float
+    description:str
+    status:str = "Disponível"
+
 
 class User(BaseModel):
     id:Optional[int]=None
     name:str
     email:str
     password:str
+
+    donations_given:List[Donation_simple] = []
 
     class Config:
         from_attributes = True
@@ -32,4 +44,22 @@ class Login(BaseModel):
 class Login_succes(BaseModel):
     user:User_simple
     token:str
+
+class Donation(BaseModel):
+    id:Optional[int] = None
+    item_name:str
+    quantity:float
+    description:str
+    status:str = "Disponível"
+    receiver_id :Optional[int] = None
+    donor_id:int
+    donor:Optional[User_simple] = None
+
+    class Config:
+        from_attributes = True
+
+class Donation_receiver(BaseModel):
+     donor_id:int
+     receiver_id :int
+
 

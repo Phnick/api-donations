@@ -21,7 +21,7 @@ class Donations(Base):
     item_name = Column(String(100))
     quantity = Column(Float)
     description = Column(String(200))
-    status = Column(Boolean)
+    status = Column(String(100))
     donor_id = Column(Integer, ForeignKey('register_user.id'))
     receiver_id = Column(Integer, ForeignKey('register_user.id'))
 

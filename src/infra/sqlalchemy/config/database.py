@@ -2,12 +2,15 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import mysql.connector
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-SGBD = 'mysql+mysqlconnector'
-usuario = 'root'
-senha = 'Ph1140'
-servidor = 'localhost'
-database = 'doar'
+SGBD = os.getenv('SGBD')
+usuario = os.getenv('USUARIO')
+senha = os.getenv('SENHA')
+servidor = os.getenv('SERVIDOR')
+database = os.getenv('DATABASE')
 SQLALCHEMY_DATABASE_URL =\
     f'{SGBD}://{usuario}:{senha}@{servidor}/{database}'
 
