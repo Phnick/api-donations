@@ -20,15 +20,11 @@ def edit_user_logged_in(user_update:User_simple, user_logged_in:User=Depends(get
     return user_service.edit_user(user_update,user_logged_in)
 
 
-
 @router.post('/token',response_model=Login_succes)
 def login(login:Login,db:Session=Depends(get_db)):
     user_service =UserService(db)
     user,token = user_service.autentic_user(login.password,login.email)
     return Login_succes(user=user,token=token)
-
-
-
 
 
 # verify if user stay logged in
