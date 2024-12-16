@@ -55,7 +55,7 @@ class Donation(BaseModel):
     description:str
     status:str = "Disponível"
     receiver_id :Optional[int] = None
-    donor_id:int
+    donor_id: Optional[int] = None
     donor:Optional[User_simple] = None
 
     class Config:
