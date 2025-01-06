@@ -29,7 +29,7 @@ class UserService:
 
         subject = 'Bem vindo/a ao nosso app de doações'
         body = f'Olá{user.email},\n\nSeu cadastro foi realizado com sucesso!' 
-        background_task.add_task(self.repository_user.send_email(user.email,subject,body))
+        background_task.add_task(self.repository_user.send_email,user.email,subject,body)
 
         return user_created 
     

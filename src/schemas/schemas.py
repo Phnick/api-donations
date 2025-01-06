@@ -8,17 +8,20 @@ class Donation_simple(BaseModel):
     item_name:str
     quantity:float
     description:str
-    status:str = "Disponível"
-
+    donor_id:Optional[int] =None
+    
+    class Config:
+        from_attributes = True
+   
 
 class User(BaseModel):
     id:Optional[int]=None
     name:str
     email:str
     password:str
-
     donations_given:List[Donation_simple] = []
 
+    
     class Config:
         from_attributes = True
 
@@ -52,14 +55,18 @@ class Donation(BaseModel):
     description:str
     status:str = "Disponível"
     receiver_id :Optional[int] = None
-    donor_id:int
+    donor_id: Optional[int] = None
     donor:Optional[User_simple] = None
 
     class Config:
         from_attributes = True
 
+
 class Donation_receiver(BaseModel):
-     donor_id:int
      receiver_id :int
+     receiver: Optional[User_simple] = None
+     
+     class Config:
+        from_attributes = True
 
 

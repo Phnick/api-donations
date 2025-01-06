@@ -1,10 +1,14 @@
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import mysql.connector
+from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import Session
 from dotenv import load_dotenv
 import os
 load_dotenv()
+
+
 
 SGBD = os.getenv('SGBD')
 usuario = os.getenv('USUARIO')
@@ -42,3 +46,4 @@ def get_db():
         yield db
     finally:
         db.close()
+
